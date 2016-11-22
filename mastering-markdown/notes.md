@@ -15,7 +15,7 @@ one asterisk *italic* or one underscore _italic_
 
 Good practice: **bold** -> use asterisks, _italic_ -> use underscore, so it's obvious.
 
-To strike through text, wrap selected text in ~~double tildas~~ 
+To strike through text, wrap ~~selected text~~ in double tildas ~~
 
 ## Headings
 Use hash's followed by a space to create headings
@@ -28,33 +28,35 @@ Use hash's followed by a space to create headings
 Github will give all your headings Id's so you can link to certain parts of your markdown.
 
 ## Links
-Add angle brackets -> <http://example.com>
+Add angle brackets < > -> <http://example.com>
 
-Show as text, wrap text in [], link in () -> [Github](http://github.com)
+Or t show as text, wrap text in [], and put the link in () -> [Github](http://github.com)
 
-Add quoted text in () after link to create title text when hovering over links -> [Some link](http://example.com "this link is amazing")
+Also, add quoted text in () after the link to create title text when hovering over links -> [Some link](http://example.com "this link is amazing")
 
-To save [space][1] and not interrupt the [flow][f] of text, or to add multiple places linked to the same [page][1], create a key by adding another pair of brackets [1] with a value after the bracketed text you want to be a link, then anywhere in the markdown that makes sense state the key again [1]: and then the link you want.
+To save [space][1] and not interrupt the [flow][f] of text, or to add multiple places linked to the same [page][1], create a key by adding another pair of brackets with a value after the bracketed text you want to be a link, then anywhere in the markdown that makes sense state the key again, followed by a colon: a space, and then the link you want.
 
 [1]: http://space.com
 [f]: http://flow.com
 
 ## Images
-Very similar to links ! followed by [] and (), the ! specifies it's an image, you put the alt text in the [], and the path to the image in (). -> ![nice picture](http://unsplash.it/500/500?random).
+Very similar to links. Put a ! followed by [] and (), the ! specifies it's an image, you put the alt text in the [], and the path to the image in (). 
+![nice picture](http://unsplash.it/500/500?random).
 
-You can also add a tool tip by adding quoted text after the image in the () -> ![succulents](http://unsplash.it/500/500?image=940 "Cool Succulents")
+You can also add a tool tip by adding quoted text after the image in the () 
+![succulents](http://unsplash.it/500/500?image=940 "Cool Succulents")
 
-Also, just like links you can use an additional set of square brackets to refer to an image elsewhere in the document -> ![bulldog][dog] 
+Also, just like links you can use an additional set of square brackets to refer to an image elsewhere in the document ![bulldog][dog] 
 
 To have images link to places, put the whole img syntax in the [] of a link.
 
 [dog]: http://unsplash.it/500/500?image=837
 
-#### Tip
+### Tip
 If you can't do what you want in markdown, you can write out the html, and it will work.
 
 ## Lists
-For unordered lists you place an *, -, + and then a space in front of your list items
+For unordered lists you place an *, -, or + and then a space in front of your list items
 
 - apple
 - banana
@@ -79,7 +81,7 @@ To nest things inside, just indent, and remember to space with lines to avoid in
 	+ sub-item 3
 
 ## Line breaks, Horizontal Rules
-If you don't want to make a space to get a new line, you can add a <br>
+If you don't want to make a space to get a new line, you can add a br tag <br>
 This sentence is now on a new line.
 
 You can create horizontal rules by making a line space then adding at least 3 --- or ===
@@ -90,9 +92,11 @@ Don't accidentally forget to put a line space, otherwise it will turn the text i
 
 =========
 
+* Seems like the github markdown doesn't allow ==== to be used as a horizontal rule anymore
+
 ## BlockQuotes
 To add block-quotes add a > in front of text on a new line
-> This will be a quote
+> This is a quote
 > 
 > - *Unknown*
 
@@ -108,7 +112,7 @@ var a = [];
 var b = {};
 ```
 
-And you can also specify the language to get syntax highlighting
+And you can specify the language to get syntax highlighting -> ```js
 
 ```js
 var num = 42;
@@ -119,7 +123,7 @@ console.log(num);
 
 You can also add some in-line code by wrapping it in 1 set of back ticks -> `var y = 0;` .
 
-To helpfully show changes you can use diff with your code block to get special highlighting of what was removed and what was added
+To helpfully show changes you can use diff with your code block to get special highlighting of what was removed and what was added -> ```diff
 
 ```diff
 let cloud = "white;
@@ -130,8 +134,9 @@ let cloud = "white;
 ## Tables
 Put pipes (|) around each column you want
 Then put pipes around a colon and dashes :-----, left aligned, :------:, center aligned, -----:, right aligned. Then add your data with more pipes to indicate which column the data should be in
+
 | Dogs | Cats | Birds |
-|:----|:-----:|-----:|
+|:-----|:----:|------:|
 |30|23|11|
 
 ## Check-boxes
