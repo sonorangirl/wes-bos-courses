@@ -12,7 +12,7 @@
 + search files for the occurrence of a string of characters that matches a specified pattern `grep`
 
 ## Terminal programs
-+ Use iTerm2 for Mac :check:
++ Use iTerm2 for Mac :white_check_mark:
 + Use Cygwin for Windows to do unix based commands
 
 ## ZSH

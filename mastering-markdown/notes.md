@@ -28,9 +28,9 @@ Use hash's followed by a space to create headings
 Github will give all your headings Id's so you can link to certain parts of your markdown.
 
 ## Links
-Add angle brackets < > -> <http://example.com>
+Add angle brackets < >  -> <http://example.com>
 
-Or t show as text, wrap text in [], and put the link in () -> [Github](http://github.com)
+Or to show as text, wrap text in [], and put the link in () -> [Github](http://github.com)
 
 Also, add quoted text in () after the link to create title text when hovering over links -> [Some link](http://example.com "this link is amazing")
 
@@ -40,13 +40,13 @@ To save [space][1] and not interrupt the [flow][f] of text, or to add multiple p
 [f]: http://flow.com
 
 ## Images
-Very similar to links. Put a ! followed by [] and (), the ! specifies it's an image, you put the alt text in the [], and the path to the image in (). 
+Very similar to links. Put a ! followed by [] and (), the ! specifies it's an image, you put the alt text in the [], and the path to the image in (). <br>
 ![nice picture](http://unsplash.it/500/500?random).
 
-You can also add a tool tip by adding quoted text after the image in the () 
+You can also add a tool tip by adding quoted text after the image in the ()<br>
 ![succulents](http://unsplash.it/500/500?image=940 "Cool Succulents")
 
-Also, just like links you can use an additional set of square brackets to refer to an image elsewhere in the document ![bulldog][dog] 
+Also, just like links you can use an additional set of square brackets to refer to an image elsewhere in the document <br> ![bulldog][dog] 
 
 To have images link to places, put the whole img syntax in the [] of a link.
 
@@ -153,6 +153,37 @@ Add brackets with a space to designate a check box, put an x in the space to hav
 You can reference issue numbers when writing markdown on github by using a hashtag immediately followed by the issue number -> #87
 
 You can also reference people using the @someone
+
+### some fun emojis
+:crescent_moon:
+:dolphin:
+:pineapple:
+:dash:
+:sparkles:
+:star:
+:boom:
+:fire:
+:four_leaf_clover:
+:art:
+:tada:
+:ghost:
+:octocat:
+
+### some useful emojis
+:white_check_mark:
+:link:
+:notebook:
+:green_book:
+:pencil:
+:ledger:
+:books:
+:thumbsup:
+:key:
+:lock:
+:mag:
+:bulb:
+:construction:
+:wrench:
 
 
 
