@@ -75,7 +75,35 @@
 + `align-content: space-between` will evenly space out the rows of items
 + `align-content: space-around` will evenly space out and add space before and after the rows of items
 
+### Align self
++ `align-self` works on the flex item itself
++ It will overwrite any rules made for all the items in a container
++ takes the same parameters as the align-items rules
 
+### Flex property
++ this property decides what the items do with extra space, or when the items don't have enough space
++ applied to the flex items
++ `flex: 1` each items, regardless of content will take up the same exact amount of space, or divy up the remaining space proportionally
++ if you add `flex: 2` to one item, it will take up twice as much space as the other items
++ `flex: 3` takes up 3 times as much space, etc.
++ flex is a shorthand for setting flex-grow, flex-shrink, and flex-basis
+
+#### Flex-grow
++ When there's extra space available, how should it be divided by the items on the same line
++ `flex-grow: 0` is the default
++ larger numbers will make items take up more of the extra available space than other items in the same row
+
+
+#### Flex-shrink
++ When there is not enough space available, how should the items in the same row be divided
++ `flex-shrink: 1` is the default
++ larger numbers will make items give up mre room to other items, and become smaller than the other items in the row
+#### Flex-basis
++ If there is a width (or height) given, and the screen size the container is able be exactly that, how big should the items be (in an ideal situation)
+
+#### Shorthand flex
++ flex: grow shrink basis
++ you should always use the shorthand, so that even if only setting the first grow value, the browser can intelligently figure out the other two values
 
 
 
