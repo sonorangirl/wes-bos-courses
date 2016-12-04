@@ -28,8 +28,8 @@
 
 + !! Because margin is not included in the box model, if you add margin, and don't account for it when you set the width of your items, it will break the flow.
 + A way to account for this is to use calc:
-	+ `width: calc(33.3333% - 20px);` -> 20 to account for each side
-	+ `margin: 10px;`
+	* `width: calc(33.3333% - 20px);` -> 20 to account for each side
+	* `margin: 10px;`
 
 ## Re-Ordering Items
 + ordering works on the flex items themselves
@@ -97,7 +97,7 @@
 #### Flex-shrink
 + When there is not enough space available, how should the items in the same row be divided
 + `flex-shrink: 1` is the default
-+ larger numbers will make items give up mre room to other items, and become smaller than the other items in the row
++ larger numbers will make items give up more room to other items, and become smaller than the other items in the row
 #### Flex-basis
 + If there is a width (or height) given, and the screen size the container is able be exactly that, how big should the items be (in an ideal situation)
 
@@ -105,6 +105,42 @@
 + flex: grow shrink basis
 + you should always use the shorthand, so that even if only setting the first grow value, the browser can intelligently figure out the other two values
 
+## Using Flexbox with older browsers
++ Use a precompiler like Auto-Prefixer to make your current standards flexbox code backwards compatible, without writing out all the vendor prefixes, etc.
+
+## Gulp
++ task runner that you can set up to auto-prefix code, watch for changes, etc.
++ Make sure gulp is installed globally
++ Get into the directory you want to use gulp in
++ get a local version going -> 
+	* `npm init` to make a new package.json file 
+	* make a new gulpfile `touch gulpfile.js`
+	* install gulp locally `npm install gulp --save-dev`
+	* get auto-prefixer `npm install gulp-autoprefixer --save-dev`
++ build your gulpfile in gulpfile.js
+	* require both gulp and autoprefixer
+	```js
+	var gulp = require('gulp');
+	var autoprefixer = require('gulp-autoprefixer');
+	```
+	* create a gulp task
+	```js
+	gulp.task('styles', function() { // 1st string is what you name the task
+		gulp.src('style.css') // this is the filepath to your CSS
+			.pipe(autoprefixer()) // run it through autoprefixer
+			.pipe(gulp.dest('build')); //then have gulp output it to a folder
+	});
+	```
+	* to run the task run `gulp styles` or `gulp [name of task]`
+	* to have gulp watch for changes
+	```js
+	gulp.task('watch', function() { //name the task in the first parameter
+		gulp.watch('style.css', ['styles']); //1st parameter is file to watch
+		//2nd parameter is an array of tasks to run it through
+	});
+	```
+	* then to have it continuously watch for changes run `gulp watch` or whatever is the name of the watch task
++ make sure to change your html to point to the newly made file
 
 
 
