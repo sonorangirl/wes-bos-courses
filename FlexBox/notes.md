@@ -54,7 +54,6 @@
 + So to vertically center something with flex-box when your `flex-direction: column` you have to have a height on the container, then set `justify-content: center`
 
 ### Align Items
-+ Align-items aligns items on the cross-axis
 + If your container is only as large as the items, then it won't appear to work
 + You need the container to be larger than the items, in order to have the items within it aligned to one side, centered, etc.
 + `align-items: flex-stretch` is the default, the items start at the top of the container, and stretch to the bottom
@@ -113,11 +112,11 @@
 + Make sure gulp is installed globally
 + Get into the directory you want to use gulp in
 + get a local version going -> 
-	* `npm init` to make a new package.json file 
+	* run `npm init` to make a new package.json file 
 	* make a new gulpfile `touch gulpfile.js`
 	* install gulp locally `npm install gulp --save-dev`
 	* get auto-prefixer `npm install gulp-autoprefixer --save-dev`
-+ build your gulpfile in gulpfile.js
++ build your gulp tasks in gulpfile.js
 	* require both gulp and autoprefixer
 	```js
 	var gulp = require('gulp');
@@ -131,7 +130,7 @@
 			.pipe(gulp.dest('build')); //then have gulp output it to a folder
 	});
 	```
-	* to run the task run `gulp styles` or `gulp [name of task]`
+	* to run the task run `gulp styles` or `gulp [name of task]` 
 	* to have gulp watch for changes
 	```js
 	gulp.task('watch', function() { //name the task in the first parameter
@@ -139,7 +138,7 @@
 		//2nd parameter is an array of tasks to run it through
 	});
 	```
-	* then to have it continuously watch for changes run `gulp watch` or whatever is the name of the watch task
+	* then to have it continuously watch for changes run `gulp watch` or whatever the name of the watch task is
 + make sure to change your html to point to the newly made file
 
 
