@@ -7,7 +7,7 @@
 + 100vh will make an element take up 100% of the height of a screen
 
 ## Flex Direction
-+ the deafult is `flex-direction: row` - the flex items are put side by side (horizontally)
++ the default is `flex-direction: row` - the flex items are put side by side (horizontally)
 + the main-axis when flex-direction is set to row is left to right
 + and the cross-axis is from top to bottom
 + you can also set `flex-direction: column` - this will stack flex items on top of one another in a column (vertically)
@@ -54,13 +54,14 @@
 + So to vertically center something with flex-box when your `flex-direction: column` you have to have a height on the container, then set `justify-content: center`
 
 ### Align Items
++ `align-items` aligns on the cross-axis
 + If your container is only as large as the items, then it won't appear to work
 + You need the container to be larger than the items, in order to have the items within it aligned to one side, centered, etc.
 + `align-items: flex-stretch` is the default, the items start at the top of the container, and stretch to the bottom
 + `align-items: center` will align items in the center (vertically centered if flex-direction is default, horizontally centered if in column)
 + `align-items: flex-start` will align items to the top of the container
 + `align-items: flex-end` will align items to the bottom of the container
-+ `align-items: baseline` will align items to the basline of the text inside the item, helpful for aligning different sized items like a title, a date, and author name
++ `align-items: baseline` will align items to the baseline of the text inside the item, helpful for aligning different sized items like a title, a date, and author name
 
 ### Align Content
 + Needs some kind of wrapping to work
@@ -82,7 +83,7 @@
 ### Flex property
 + this property decides what the items do with extra space, or when the items don't have enough space
 + applied to the flex items
-+ `flex: 1` each items, regardless of content will take up the same exact amount of space, or divy up the remaining space proportionally
++ `flex: 1` each items, regardless of content will take up the same exact amount of space, or divvy up the remaining space proportionally
 + if you add `flex: 2` to one item, it will take up twice as much space as the other items
 + `flex: 3` takes up 3 times as much space, etc.
 + flex is a shorthand for setting flex-grow, flex-shrink, and flex-basis
@@ -105,7 +106,7 @@
 + you should always use the shorthand, so that even if only setting the first grow value, the browser can intelligently figure out the other two values
 
 ## Using Flexbox with older browsers
-+ Use a precompiler like Auto-Prefixer to make your current standards flexbox code backwards compatible, without writing out all the vendor prefixes, etc.
++ Use a pre-compiler like Auto-Prefixer to make your current standards flexbox code backwards compatible, without writing out all the vendor prefixes, etc.
 
 ## Gulp
 + task runner that you can set up to auto-prefix code, watch for changes, etc.
