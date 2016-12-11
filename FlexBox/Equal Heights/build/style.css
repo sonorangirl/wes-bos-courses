@@ -1,0 +1,50 @@
+/* Some CSS Setup - nothing to do with flexbox */
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
+}
+
+a {
+  color:white;
+}
+
+.item.large {
+  font-size: 40px;
+}
+
+.item.small {
+  font-size: 20px;
+}
+
+.item {
+  background:rgba(255,255,255,0.2);
+  margin:10px;
+  padding:20px;
+  font-size: 30px;
+}
+
+/* Flexbox Starts Here: */
+.elements {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.item {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 calc(33.333% - 20px);
+          flex: 1 1 calc(33.333% - 20px);
+}
