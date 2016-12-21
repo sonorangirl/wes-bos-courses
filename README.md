@@ -8,3 +8,6 @@ Projects I've completed following Wes Bos's online courses and tutorials
 - [x] What the FlexBox
 - [ ] Sublime Text
 - [ ] JavaScript30
+- [ ] ES6
+- [ ] React for Beginners
+- [ ] Learn Redux
