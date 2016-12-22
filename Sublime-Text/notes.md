@@ -231,8 +231,41 @@
 			<div class="wrapper"><div class="main"><p class="about"></p></div></div>
 			```
 
+## Line Swapping/Bubbling
++ move whole lines up or down
++ use **command** + **control**, then up or down to move the whole line where you want
++ you can also select multiple lines and move them all at once
++ also helpful when trying to combine two groups by utilizing multiple cursors to create spaces, then moving one group into the other.
 
+## Panes and Groups
++ You can have multiple panes of code open in the same window
++ Use **command** + **option** + `1,2,3 or 4`, depending on how many columns you want
++ Use **command** **option** **shift** + `1,2,3,4` to create multiple rows of panes
++ To create a 4 square grid use **command** + **option** +`5`
 
+## Origami
++ Package that controls the columns and rows of panes you can view
++ to create panes ->
+	* above - **command** `K` **command** up `↑`
+	* below - **command** `K` **command** down `↓`
+	* to the right - **command** `K` **command** right `→`
+	* to the left - **command** `K` **command** left `←`
+	* Or hold down **command**, press and let go of `K`, then pick which direction you want it to appear in
++ to destroy panes ->
+	* same as create, but add **shift** before selecting the direction that the pane you want to get rid of is in	
++ Once you have the panes you want you can drag your files to them
++ if you close a pane with an open file, it won't get rid of the file, but instead move it to the closest pane.
++ to focus on a different pane ->
+	* use **command** `K` then the direction you want to move in `→←↑↓` (not holding command down)
++ to move to a new pane and focus on it with the current file, use **command** `K` then **shift** and `→←↑↓` in the direction you want it
++ or to create a new pane and move the current file to it while focusing on the previous pane use **command** `K` then **command** **alt** `→←↑↓` 
++ You can also have the same file open in different panes (useful when viewing large files) by cloning. Making a change to either pane, will update them both. To clone the current file use **command** `K` then let go of command, and press **alt** + `→←↑↓`
++ Also if you want to work on one pane in mostly full screen, but not lose your panes layout, you can zoom in on that pane with **command** `K` `Z`
++ then when done working use **command** `K` **shift** `Z` to un-zoom back out to the multiple pane layout
++ you can also use the command palette and search for create, destroy, focus, zoom, etc if you forget the keyboard shortcuts
+
+## Emojis!
++ to add a symbol or emoji use **control** **command** **spacebar** then select it from the window that pops up 🐙☘️🌵😉
 
 
 
