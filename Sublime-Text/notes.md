@@ -137,6 +137,15 @@
 + to add some dummy text easily use `lorem`
 	* you can use just `lorem` to get a paragraph
 	* or you can specify an amount of words, `lorem5` will add 5 words, `lorem20` will add 20 words, etc.
+	* You can also use with snippets → ul>li*3>lorem4 →
+		```html
+		<ul>
+			<li>Lorem ipsum dolor sit.</li>
+			<li>Quasi possimus, quos tempora!</li>
+			<li>Earum, distinctio. Sunt, eum.</li>
+		</ul>
+		```
+
 + when creating a new html doc use `!` and when you hit tab, it will give you all the necessary tags (html, head w/ meta, title, body) to start the file
 + Some cool auto-complete suggestions
 	* `a:link` -> `<a href="http://"></a>`
@@ -180,11 +189,27 @@
 </ul>
 ```
 + and if you need a leading zero in your increments, use two `$$`, it will replace the first $ with a zero when needed
++ You can also start the increment count at a certain number with the `@` symbol
++ li.item$@5*3 → 
+```html
+<li class="item5"></li>
+<li class="item6"></li>
+<li class="item7"></li>
+```
++ Or you can increment backwards 
++ p.staff$$@-4*3 →
+```html
+<p class="staff06"></p>
+<p class="staff05"></p>
+<p class="staff04"></p>
+```
+
 
 ### Tag Wrapping
 + For when you already have content that you need to wrap in tags
 + use **control** + `w` after selecting the text you want to wrap
 + Then, in the box below that pops up, enter the emmet abbreviation that you want the tag to be
++ This also works without emmet with just **control** + **shift** + `w`, but only for basic tags
 
 ### Emmet CSS
 + Uses fuzzy search to choose what it thinks you're looking for, for example 
@@ -231,6 +256,15 @@
 			<div class="wrapper"><div class="main"><p class="about"></p></div></div>
 			```
 
+### DataURIs
++ You can encode images directly into html/css instead of using external files
++ Use **control** + **shift** + `D` on a line that contains an image
++ Ex. when used inside the line `<img src="dot.png">` will become `<img src="data:image/png;base64,iVBORwOKGgoAA...and more encodedness/>` so that you no longer need to have that external resource
++ Because the resulting string of code is huge, probably need to turn line wrapping off in order to use it
+
+### Find Matching tags
++ when trying to figure out where a certain element closes, you can search for it's matching tag using **control** + **shift** + `T` anywhere within the first tag
+
 ## Line Swapping/Bubbling
 + move whole lines up or down
 + use **command** + **control**, then up or down to move the whole line where you want
@@ -264,8 +298,82 @@
 + then when done working use **command** `K` **shift** `Z` to un-zoom back out to the multiple pane layout
 + you can also use the command palette and search for create, destroy, focus, zoom, etc if you forget the keyboard shortcuts
 
+## Multiple Cursors
++ to put multiple cursors where you want them, hold down command and click where you want them to go
++ or to select multiple lines at once, hold down **option**, then drag to include all the line you want the cursor on, or if you have middle click enabled on your mouse, middle click, then drag to include everything you want.
++ without using the mouse you can hold **control** and **shift** to select lines above and below to include
+
+## JSHint
++ Gives you hints at possible errors in your code
++ Get package with gutter in name to have hints be in the gutter of document
++ settings are located in a hidden file at the root of your system which you can get to with `subl ~/.jshintrc` to make any changes.
++ you can also add project specific settings files to make changes just for that project by including a .jshintrc file in the project
++ If you want to remove the warnings about variables not found that might be in other files, make a comment at the top with //global {variable name here}// -> //global modal//
++ By default you need to run jshint from the command palette to lint your file, but you can change this in the plugin options, and change it to lint automatically, or whenever you save the file, etc.
+
+## Other Linters
++ Sublime Linter is a package that provides a framework for other language specific frameworks
++ 
+
+## RegEx Searching
++ Can let you change large amounts of code much faster
++ To delete all empty lines search with → `^\n`
++ Find all classes or ids that are called about → `(class|id)="about`
+
+## Joining Lines
++ To join two lines (or get rid of an empty line below) use **command** + `J`
+
+## Duplicating Code
++ Duplicate a line with **command** + **shift** + `D`, while anywhere within the line you want to duplicate
+
+## Deleting lines and words
++ quickly delete a whole line with → **control** + **shift** + `K`
++ to just delete from where the cursor is to the end of the line drop the shift and just use → **control** + `K`
++ And to delete from the cursor back to the beginning of the line use → **command** + **backspace**
++ To delete just a word use → **control** + **backspace**
++ Or to delete the word in front of the cursor use → **control** + **fn** + **backspace**
++ to forward delete letter by letter use → **fn** + **backspace**
+
+##Inserting new lines
++ to insert a new line after the current one, while the cursor is anywhere in the line use → **command** + **enter**
++ or to insert a new line before the current line, while the cursor is anywhere in the line use → **command** + **shift** + **enter**
+
+## Select to expand and indent
++ to select everything inside a code block (either brackets or curly braces) use → **control** + **shift** + `m`
++ to select just the indented code in a block use → **command** + **shift** + `j`
++ 'Select Quoted' is a package you can use to select just the text inside quotes (remeber to install when home!!!) which you can use by → **control** + `'`
++ to include the quote marks in the selection, hit control + `'` again
+
+
+## Sublime projects
++ Lets you save build systems and settings to use across files all in the same project, esp. helpful for groups
++ save a file in a new .sublime-project file to create a new project (tech a new project is created whenever you open a new file, but you have to save it in a .sublime-project folder you create to save it as a project)
++ It also creates a .sublime-workspace file with settings used, you should add this to your .gitignore files
++ to override a user settings (ex. if a group project is using different settings than you would normally), you can add it to the .sublime-project file
++ to add files or folders to the project, just drag them into the sidebar with the project open
++
+
+## Macros
++ record the steps for simple tasks you do often into fewer keystrokes
++ to start recording → go to `Tools` → `Record Macro`
++ start doing the steps you want to record
++ then to stop recording use `Tool`s → `Stop Recording` → `Save Recording`
++ then you can create a key binding for your macros (in the user - keybindings settings)
++ to edit the macro just open the .sublime-macro file
+
 ## Emojis!
 + to add a symbol or emoji use **control** **command** **spacebar** then select it from the window that pops up 🐙☘️🌵😉
+
+## Using Git within Sublime
++
+
+## Live Reloading
++ !! Install live reload package when home, then visit the live reload site to install for chrome
++ To allow this plugin to work with live sites, check the box to allow access to file servers. otherwise it will only work with local
+
+## Sublime Server
++
+
 
 
 
