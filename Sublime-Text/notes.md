@@ -341,8 +341,8 @@
 ## Select to expand and indent
 + to select everything inside a code block (either brackets or curly braces) use → **control** + **shift** + `m`
 + to select just the indented code in a block use → **command** + **shift** + `j`
-+ 'Select Quoted' is a package you can use to select just the text inside quotes (remeber to install when home!!!) which you can use by → **control** + `'`
-+ to include the quote marks in the selection, hit control + `'` again
++ 'Select Quoted' is a package you can use to select just the text inside quotes which you can use by → **command** + `'`
++ to include the quote marks in the selection, hit **control** + `'` again
 
 
 ## Sublime projects
@@ -362,17 +362,28 @@
 + to edit the macro just open the .sublime-macro file
 
 ## Emojis!
-+ to add a symbol or emoji use **control** **command** **spacebar** then select it from the window that pops up 🐙☘️🌵😉
++ to add a symbol or emoji use **control** **command** **space-bar** then select it from the window that pops up 🐙☘️🌵😉
 
 ## Using Git within Sublime
-+
++ bring up the command palette, then type in any git command you normally would use on the command line
++ Use git custom to type in a git command that isn't included in the package such as adding remote repositories
++ for checking status, `??` denotes untracked files, `A` denotes the file was added
++ Using `git diff` will highlight the changes right in sublime
++ Add and commit the current file using `git quick commit`
++ GitGutter will show your changes in the gutter
++ Sublimerge will allow you to compare files, compare revisions to older versions, and merge changes
 
 ## Live Reloading
-+ !! Install live reload package when home, then visit the live reload site to install for chrome
++ Need to also visit the live reload site to install extension for chrome
 + To allow this plugin to work with live sites, check the box to allow access to file servers. otherwise it will only work with local
++ It will then show live updates on your site whenever you make changes.
++ You can also add a small script to make it work on mobile devices as well
 
 ## Sublime Server
-+
++ Allows you to start a local server directly from the folder you are in
++ once in a folder with some files you want to serve in it, type start into the command palette and select the option to start the sublime server
++ by default it runs on local port 8080
++ 
 
 
 
