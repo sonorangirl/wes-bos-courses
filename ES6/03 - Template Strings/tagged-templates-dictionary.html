@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tagged Templates</title>
+    <style>
+        abbr {
+            border-bottom:1px dotted grey;
+        }
+    </style>
+</head>
+<body>
+
+<div class="bio">
+
+</div>
+
+<script>
+    const dict = {
+        HTML: 'Hyper Text Markup Language',
+        CSS: 'Cascading Style Sheets',
+        JS: 'JavaScript'
+    };
+
+    const first = 'Erin';
+
+    function addAbbr(strings, ...values) {
+        let abbr = values.map(value => {
+            if (dict[value]) {
+                return `<abbr title="${dict[value]}">${value}</abbr>`;
+            }
+            else {
+                return value;
+            }
+        });
+
+        return strings.reduce((sentence, string, i) => {
+            return sentence + string + (abbr[i] || '');
+        }, '');
+    }
+
+    let sentence = addAbbr`Hi, I'm ${first}, and I love to code ${'HTML'}, ${'CSS'}, and ${'JS'} `;
+
+
+    const bio = document.querySelector('.bio');
+    const info = document.createElement('p');
+    info.innerHTML = sentence;
+    bio.appendChild(info);
+
+</script>
+</body>
+</html>
