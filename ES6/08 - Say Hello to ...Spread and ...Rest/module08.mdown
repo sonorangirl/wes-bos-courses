@@ -1,0 +1,64 @@
+# ES6 for Everyone Notes
+
+## Module 8
+
+### Spread and Rest operators
+
+#### ...spread
++ takes every iterable item from a string or existing array and makes a new array from it
+	* `"HELLO"` → `["H", "E", "L", "L", "O"]`
++ so if you want an array of letters from a string, or a new array made of items from multiple different arrays, use the spread operator before the iterable item you want to make into the new array
+	```javascript
+	const name = 'Erin';
+	const locations = ['city', 'beach', 'mountains'];
+	const times = ['morning', 'afternoon', 'night'];
+
+	const letters = [...name]; // ['E', 'r', 'i', 'n']
+	const info = [...times, ...locations]; // ['morning', 'afternoon', 'night', city', 'beach', 'mountains']
+	```
+
++ you can also use it to create an entirely new copy of an array that isn't just referencing an old array, but can do operations on the new array without overwriting the old one → `let newArray = [...oldArray];`
++ this allows you to remove certain items from objects or nodeLists, etc. easily
+	```javascript
+	const items = [{item: 'A',id: 122}, {item: 'B', id: 123}, {item: 'C', id: 124}];
+	var itemID = 123;
+	//find location of item to remove
+	var itemLocation = items.findIndex(item => item.id === itemID);
+	//create new item list while excluding the specified item
+	var newList = [...items.slice(0, itemLocation), ...items.slice(itemLocation + 1)]; //[{item: 'A', id: 122}, {item: 'C', id: 124}];
+	```
++ the spread operator can also be used to spread arguments into a function. If you have multiple parameters taken by your function, you can take an array and use the items in the array as the arguments →
+	```javascript
+	const name = ['Erin', 'Manahan'];
+	function hi(first, last) {
+		return `Hello there ${first} ${last}`;
+	}
+
+	hi(...name); // Hello there Erin Manahan
+	```
+
+#### Rest parameter
++ has the same ... as the spread operator
++ it works in the opposite way instead of taking one thing and unpacking it into multiple things, it takes multiple things and packs it into one thing → 
+	* `"H", "E", "L", "L", "O"` → `["HELLO"]`
++ use in functions when you have a specific num of required arguments, and an unspecific amount of optional arguments
+	```javascript
+	function convert(rate, ...amounts) {
+		return amounts.map(amount => rate * amount);
+	}
+
+	convert(1.26, 21, 37, 104, 79); //26.46, 46.62, 131.04, 99.54
+	```
++ also useful in destructuring data →
+	```javascript
+	//show scores for a user
+	const log = ['Erin', 42, 5, 4, 5, 2, 1, 5];
+	const [first, id, ...scores] = log;
+
+	console.log(first, id, scores); //'Erin', 42, [5,4,5,2,1,5];
+	```
+
+
+
+
+
