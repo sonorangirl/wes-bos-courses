@@ -1,0 +1,32 @@
+# ES6 for Everyone Notes
+
+## Module 9
+
+### Object Literal upgrades
++ when the object property names are going to be the same as the variable names they are derived from, you can leave off setting them and instead just list the property name
+	```javascript
+	const dogs = {
+		first: first, 
+		last: last, 
+		age: age, 
+		breed: breed
+	};
+	const cats = {
+		first, 
+		last, 
+		age, 
+		breed
+	};
+	```
++ and when adding methods to objects, you can leave off the `: function` as well
+	```javascript
+	let modal = {
+		open: function() {
+
+		},
+		close() { //same as open
+
+		}
+	};
+	```
++ you can also now compute the property names inside of objects using template strings, array values, etc.

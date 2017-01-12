@@ -1,0 +1,73 @@
+# ES6 for Everyone Notes
+
+## Module 10
+
+### Promises
++ promises return data at a future time, so instead of stopping the rest of the code from running, it will return a promise which will run once the data has been returned from the place it's being fetched from
++ used often when getting JSON data with requests like `$.getJSON` or `.ajax` or `.fetch()`
++ you can then listen for when the data has been fetched from the source, using `.then()` which will run code once the promise has been returned
++ you can also chain multiple .then() statements to eachother to do multiple things like once data is recieved, then convert to json, once converted to json, then use that data in some way
++ there is also a `.catch()` that needs to be chained on after the `.then()` blocks which will listen for errors when recieving data and run only if the data was not recieved or some other error occurs
++ for example →
+	```javascript
+	const promise = fetch('http://example.com');
+
+	promise
+		.then(data => data.json())
+		.then(data => console.log(data))
+		.catch(err => console.error(err));
+	```
++ to create your own promise use `new Promise()` which takes in a single function with two parameters, resolve, and reject
+	```javascript
+	const p = new Promise((resolve, reject) => {
+		resolve('The promise is back');
+		reject(Error('the promise had an error'));
+	});
+	
+	p
+		.then(data => console.log(data))
+		.catch(err => console.error(err));
+	```
+
+#### Flow control
++ promises can also be used to help control the flow of your code
++ often used in the back-end with Node.js
+	```javascript
+	function getById(id) {
+		//create a new promise
+		return new Promise((resolve, reject) => {
+			//find the item
+			const item = items.find(item => item.id === id);
+			//if item exists return it
+			if (item) {
+				resolve(item);
+			//else say not found
+			} else {
+				reject('Item not found');
+			}
+		});
+	}
+
+	getById(42)
+		.then(data => console.log(data))
+		.catch(err => Error(console.error(err)));
+	```
++ when using multiple promises, if you want to wait until all promises have returned before doing anything with any of them, you can use `.all()` before adding your .then() and `.catch()` which will make any promises you have wait until they've all returned
+	```javascript
+	Promise
+		//takes an array of the promises to wait for
+		.all([promise1, promise2])
+		//then returns another promise that converts them to json
+		.then(responses => {
+			return Promise.all(responses.map(res => res.json()));
+	    })
+	    //then when responses are converted, does stuff with the returned json
+	    .then(responses => {
+	    	const [promise1Info, promise2Info] = responses;
+	    	console.log(promise1Info, promise2Info);
+	    })
+		.catch(err => console.error(err));
+	```
+
+
+
