@@ -1,0 +1,15 @@
+# ES6 for Everyone Notes
+
+## Module 11
+
+### Symbols
++ new primitive type that was added to JS
++ its just a unique identifier used to avoid naming collisions
++ it's a long sequence of chars that is used to make sure your variable is unique → 
+	```javascript
+	const cat = Symbol('Cat') //ajhsdhsajdkashuitygkjaskusgkskd
+	```
++ where the chars are the symbol and 'Cat' is the reference to the symbol for the variable `cat`
++ so if you have a large amount of data, some of which is identical, for ex. people with the same names, you can use symbols to uniquely identify each person in the data and not overwrite a previous person
++ however, symbols are not enumerable, and cannot be looped over
++ you can access their data though with `Object.getOwnPropertySymbols(obj);` which you can then map over to access the data for each symbol

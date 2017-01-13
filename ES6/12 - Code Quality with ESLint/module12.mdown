@@ -1,0 +1,20 @@
+# ES6 for Everyone Notes
+
+## Module 12
+
+### ESLint
++ helps catch errors before they cause issues
++ can have both local and global settings for eslint, helpful when working with specific rules for certain projects
++ if there is no .eslintrc file anywhere in your project the rules will default to global
++ when running eslint in the terminal, it will list the errors, but also can fix small errors (spacing, let/var/const) for you by adding the --fix flag
++ you can turn off error, warning messages in the rules section of the settings by using "off", "warn", "error", or 0, 1, 2 respectively
++ You can also turn off certain rules in a single file by putting a comment at the top
+	* to stop errors about undeclared variables add global variables → `/* globals ga */`
+	* or to turn off specific rules use eslint-disable → `/* eslint-disable no-vars */`
+	* you can also disable a rule for a single block, by adding the disable rule above the block, and then enabling it after the block (or however much of the code you want it off for) → `/* eslint-enable no-vars */`
+	* you can also disable every rule if you don't include a specific rule or rules in the comment
++ Using plugins, you can also have eslint check for errors in your script tags in html, or in markup files, along with may other different kinds of files, there are plugins for most things (mongoDB, mocha, etc)
++ You can also include an eslint file in your project and include a git hook for it, which means that any code committed to the project must first pass the linter without errors
+	* in projects that have git running, there's a folder called .git that doesn't show in the directories
+	* it has a hooks directory in it that has sample hooks that can be used.
+	* To implement the eslint rule, change out the sample commit-msg one for the commit-msg.txt found in this section, and any code being commited to that project will now have to meet the eslint rules in the project before it can be committed.
