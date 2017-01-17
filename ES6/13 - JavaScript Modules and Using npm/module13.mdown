@@ -1,0 +1,41 @@
+# ES6 for Everyone Notes
+
+## Module 13
+
+### WebPack and Modules
+
+#### npm
++ a package manager that allows you to install and import packages from other developers, or small parts of them, and use in your own code
++ upon initializing with npm init in your project folder, it will create a new package.json file to reference all the dependencies the project has, or the modules the project is using
++ then at the top of the file you're using them in, you can import those packages, or just certain modules from the package, into your file
+
+#### WebPack
++ But, since browsers don't automatically handle imports yet, you need to bundle them together first, which is what WebPack does.
++ you install webpack with npm just like other packages, then create a `webpack.config.js` file 
++ follow the tutorial's instructions for how to set up the config file, might need to keep a copy to just add to future projects
++ then you have to add the build script to the package.json file →
+	* `"build": "webpack --progress --watch"`
++ then you can run npm build (which is the name of the script added), and it will create the build files
++ Remember to rename the script src tag in your html file to the new output file created, in this tutorial called `_build/bundle.js`
+
+#### Babeljs
++ this is a build process that will take ES6 code and convert it to ES5 so that it will work in all the browsers
++ install it and it's dependencies when you're installing webpack
+
+#### creating modules
++ keep your modules in a folder within your project to keep them organized, here he's using a folder called src
++ you can then import your modules just like other libraries using `import`
++ but you need to export your module in order to make it available outside the module
+	```javascript
+	//Default export
+	const moduleName  = '123';
+	export default moduleName;
+
+	//Named Export
+	export const moduleName = '123';
+
+	```
+	* Default → use `export default moduleName` in front or below your module to export it by default, then you can name it anything you want in your code, no need for curly brackets around the name either → `import moduleName from...`
+	* Named → use `export` in front of the code you want to export, will be a named export so you have to name it that variables name to import it and use curly brackets around the name → `import { moduleName } from ...`
+ 
+
