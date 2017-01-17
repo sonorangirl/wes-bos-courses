@@ -1,0 +1,101 @@
+# ES6 for Everyone Notes
+
+## Module 15
+
+### Classes
+
+#### Prototypal Inheritance
++ When you create a prototype, all of the things created using that prototype will inherit it's methods and variables, just like creating a new array will inherit all the methods of the Array prototype →
+	```javascript
+	function Movie( title, genre, year) { //Prototype
+		this.title = title; 
+		this.genre = genre;
+		this.year = year;
+	}
+
+	Movie.prototype.review = function(rating) {
+		rating === "good" ? console.log("It's Awesome") : console.log("Pass");
+	} //method added to prototype
+
+	const fifthElement = { "The Fifth Element", "sci-fi", 1997 }; //inherited from prototype
+
+	fifthElement.review("good"); // "It's Awesome" -- inherited method
+	```
+
+#### ES6 Classes
++ can either be written as a class declaration or a class expression
+	* declaration →  ` class Dog {} `
+	* expression → ` const Dog = class {} `
++ there is one required method to be added in a class that's called a constructor that lets things know what happens when a new instance is created
+	```javascript
+	class Movie2 {
+		constructor( title, genre, year ) {
+			this.title = title;
+			this.genre = genre; 
+			this.year = year;
+		}
+		review() {
+			(rating === "good") ? console.log("It's Awesome") : console.log("Pass");
+		}
+	}
+
+	const sharknado = new Movie2( "Sharknado", "action", 2010 );
+	sharknado.review("bad"); // "Pass" - inherited from the class
+	```
++ you will use the shorthand `constructor() {}` instead of `constructor: function() {}` for all methods created in a class
++ And don't add commas between the methods like you would in an object, as it will break
++ classes can also have static methods added that are only accessible by calling them on the class, ie they aren't inherited >> `static info() {}`
++ You can add getters and setters to classes as well, they aren't really methods, but are properties that are computed >>
+	```javascript
+	class Movie3 {
+		constructor( title, genre, year ) {
+			this.title = title;
+			this.genre = genre;
+			this.year = year;
+		}
+		get info() {
+			return `${title} is a ${genre} film, made in ${year}`;
+		}
+	}
+	const getOut = new Movie3( "Get Out", "horror", 2016 );
+	getOut.info(); // "Get Out is a horror film, made in 2016";
+	```
+
+#### Extending ES6 Classes
++ you can also extend classes when creating other new classes using the extend keyword, and adding the super() method →
+	```javascript
+	class Comedy extends Movie3 {
+		constructor(title, genre, year, funny) {
+			super(); // inherits the properties and methods from Movie3
+			this.funny = funny; // adds it's own property
+		}
+		howFunny() { // adds it's own method
+			(funny > 7) ? console.log("It's hilarious") : (funny > 4) ? console.log("Kinda funny") : console.log("Crickets");
+		}
+	}
+	const airplane = new Comedy( "Airplane", "comedy", 1980, 10);
+	airplane.info(); // "Airplane is a comedy film, made in 1980" - inherited from Movie3 extended class
+	airplane.howFunny(); // "It's hilarious" - inherited from new Comedy class
+	```
++ don't extend classes deeper than two or three extensions, otherwise it will start to get to complex to handle
++ You can also extend the default prototypes such as Array and Object, without messing with their prototype, so that you can use their methods with your new class →
+	```javascript
+	class MovieList extends Array {
+		constructor(name, ...items) { // gets name of list, then adds all the other items as the var items
+			super(...items); // takes the items variable and spreads it into an array using the methods from the Array prototype
+			this.name = name;
+		}
+		addMovie(movie) {
+			this.push(movie); // uses the push method inherited from th Array prototype
+		}
+	}
+	const erinMovies = new MovieList( "Erin's favorite movies",
+		{ title: "The Shawshank Redemption", stars: 10 },
+		{ title: "Amelie", stars: 9 },
+		{ title: "Stranger Than Fiction", stars: 9 },
+	);
+	erinMovies.add({ title: "Wall-E", stars: 10 });
+	```
++ So erinMovies is an array of objects, but it can have properties on it, including `erinMovies.name`, and you can iterate through the array of movie objects using a `for of` loop, and it won't include the name property, it'll just iterate over the array of movies. (A `for in` loop would loop over the array keys and would include the name property)
++ 
+

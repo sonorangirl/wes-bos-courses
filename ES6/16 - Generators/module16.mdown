@@ -1,0 +1,67 @@
+# ES6 for Everyone Notes
+
+## Module 16
+
+### Generators
++ generators are functions that you can start and stop, or pause for a certain amount of time
++ you can also pass them additional data at a later point in their progress
++ you create a generator by adding an asterisk to the function keyword and using the `yield` keyword in the function body >>
+	```javascript
+	function* generatorFunc() {
+		yield "Good for now"; // similar to return, but it returns only until the function is called again later
+		yield "Still good";
+		yield "Ok done"; //returned on the third func call
+	}
+	```
++ you can use `.next()` to cycle through the yield statements
++ you can also dynamically generate the yield statements 
+	```javascript
+	/*
+	  A list of inventors
+	*/
+	const inventors = [
+	  { first: 'Albert', last: 'Einstein', year: 1879 },
+	  { first: 'Isaac', last: 'Newton', year: 1643 },
+	  { first: 'Galileo', last: 'Galilei', year: 1564 },
+	  { first: 'Marie', last: 'Curie', year: 1867 },
+	  { first: 'Johannes', last: 'Kepler', year: 1571 },
+	  { first: 'Nicolaus', last: 'Copernicus', year: 1473 },
+	  { first: 'Max', last: 'Planck', year: 1858 },
+	];
+
+	function* loop(arr) {
+		for (const item of arr) {
+			yield item;
+		}
+	}
+	
+	const generateInventors = loop(inventors);
+
+	generateInventors.next().value; // { first: 'Albert', last: 'Einstein', year: 1879 }, using next will get the next item in the list, until the list has ended
+	```
+
+#### Ajax Flow Control
++ generators allow you to create a flow for ajax requests
++ so you can easily fetch data from one source, wait, and then fetch from another source only after the first data has been returned
+	```javascript
+	function ajax(url) {
+		fetch(url).then( data => data.json() ).then( data => dataGen.next(data) ); //function retrieves data, converts to json, then stores the data in the current variable and triggers the next request with .next()
+	}
+
+	function* steps() { //generator function
+		const data1 = yield ajax("http://example1.com");
+		const data2 = yield ajax("http://example2.com");
+		const data3 = yield ajax("http://example3.com");
+	}
+
+	const dataGen = steps();
+	dataGen.next(); // starts the process
+	```
++ And you can use data from the previous requests in the proceeding requests because they won't run until the previous requests have come back
++ Also, by using a `for of` loop, you don't have to trigger the generator with the .next() method, it will just run and go through any hard coded yield statements, or all dynamically created yield statements
+
+
+
+
+
+
