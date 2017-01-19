@@ -1,0 +1,18 @@
+# ES6 for Everyone Notes
+
+## Module 19
+
+### Maps
+
++ Maps work similar to sets, except they have different keys and values
++ `.set()` allows you to add a new item in the map
++ `.has()` will check if an item is in the map
++ `.delete()` will remove an item
++ `.get()` will take in a key and return the value
++ you can also iterate over maps with `.forEach` or `for of` loops
++ you can actually use objects as keys in a map, so it's useful when needing to keep track of nodeLists or metadata that might be in an object, without having to give those objects specific ids, you can just use the entire object as the key
+
+#### Weak Maps
++ like a weak set, it's not iterable
++ but like a weak set, when an item in a weak map is deleted, it's then garbage collected and no longer referenced inside the map, while it will persist in a normal map
+
