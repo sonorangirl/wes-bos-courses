@@ -1,0 +1,22 @@
+# ES6 for Everyone Notes
+
+## Module 18
+
+### Sets
+
++ sets in js are like a unique array, where you can only have the same item in the array once
++ you also can't access items indiviually, and it's not index based
++ can use `.size()` to determine how large the set is
++ `.delete()` to remove an item from the set, without having to know it's location within the set, because all the items are unique
++ `.add()` will add an item to the set
++ and `.clear()` will clear the whole set
++ `.values()` is a generator for the set that you can use to access each item using `.next()`, or all the items using a `for of` loop
++ each item also has the same key and value, so .keys() will list the same as .values() → `{ item1, item2 }`
++ and .entries() will list them together → `{[item1, item1], [item2, item2]}`
++ `.has()` is useful to check whether an item exists in the set
+
+#### Weak Sets
++ works pretty similar to sets, but it can only contain objects, not strings, numbers, etc.
++ and you can't iterate over a weak set, so no `.next()` or using a `for of` loop
++ what it does is use garbage collection to delete items within the set that no longer have any references to them, so if an item is deleted while the program is running, it will automatically get removed from the weak set during garbage collection
++ this is helpful for preventing memory leaks

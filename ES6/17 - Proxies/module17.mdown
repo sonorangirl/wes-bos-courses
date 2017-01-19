@@ -1,0 +1,35 @@
+# ES6 for Everyone Notes
+
+## Module 17
+
+### Proxies
++ Proxies let you override default behavior of objects
++ then you can insert behavior you want to happen when someone does a normal operation on that object >>
+	```javascript
+	const person = { name: 'Erin', country: 'usa'};
+	const personProxy = new Proxy( person, {
+		//here is where you would add the methods you want to run
+		get( target, country ) {
+			return target[country].toUpperCase();
+		}
+	});
+
+	personProxy.country // 'USA' ,normal operation is trapped, the supplied proxy method is instead returned
+	```
++ Example for formatting phone nums →
+	```javascript
+	const phoneFormatter = {
+		set( target, name, value ) {
+			return target[name] = value.match(/[0-9]/g).join('');
+		},
+		get( target, name ) {
+			return target[name].replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+		}
+	}
+
+	const phoneNums = new Proxy({}, phoneFormatter);
+	
+	phoneNums.work = '555 098 7654'; // returns (555) 098-7654
+
+	```
++ Also useful to set up error handling for small things like using the wrong capitalization or spelling of an object key, you can alert the user of the error using a proxy to catch it and return what it should be
