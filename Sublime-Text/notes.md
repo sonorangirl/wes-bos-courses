@@ -120,8 +120,118 @@
 	* When you hit **esc**, you will have multiple cursors at each selected match, so you can change multiple instances at once
 	* To skip over unwanted matches use **command** `k`, then you can continue on with `d` while holding down **command**
 	* To quickly change all the instances of a word, select the word you want, then use **command** **control** `g`, when you **esc** you will have multiple cursors at all the instances
++ To get multiple cursors on multiple rows without any matching, just hold down **command** and select the spots you want to have a cursor, or use **command** and **option** then drag to select as many lines as you want.
+
 
 ## Emmet
+### HTML
++ for any element, type the element name, then hit tab to get the tags, including necessary attributes like src for images
++ to add a class to the element, type a `.` and the class name -> `p.special` will auto-complete to `<p class="special"></p>`
++ you can also add multiple classes, just add another `.` and the next class name -> `p.wrapper.article` completes to `<p class="wrapper article"></p>`
++ if you don't specify an element, it will automatically assume it's a div
++ also to add an id add a # and the id name -> `p#first` auto-completes to `<p id="first"></p>`
++ if you want both a class and an id, you can also chain them together -> `.about#location` completes to `<div id="location" class="about"></div>`
++ to pre-fill any attribute, use square brackets -> `a[href="index.html"]` will auto-complete to `<a href="index.html"></a>`
++ and you can set multiple attributes at once by using another set of square brackets -> `img[src="dog.js"][alt="dog"]` will auto-complete to `<img src="dog.js" alt="dog">`
++ to pre-populate text just use {} -> `p{hello there}` will complete to `<p>hello there</p>`
++ to add some dummy text easily use `lorem`
+	* you can use just `lorem` to get a paragraph
+	* or you can specify an amount of words, `lorem5` will add 5 words, `lorem20` will add 20 words, etc.
++ when creating a new html doc use `!` and when you hit tab, it will give you all the necessary tags (html, head w/ meta, title, body) to start the file
++ Some cool auto-complete suggestions
+	* `a:link` -> `<a href="http://"></a>`
+	* `link` -> `<link rel="stylesheet" type="text/css" href="">`
+	* see all the available auto-complete types at the emmet docs
+
+#### Nesting elements
++ Use an angle bracket to indicate you want the following element to be nested inside the preceding one -> div>p.article>span.author completes to ->
+```html
+<div>
+	<p class="article">
+		<span class="author"></span>
+	</p>	
+</div>
+```
++ to add sibling elements, use the `+` operator - > .wrapper>p.special+img[src="dog.jpg"] will complete to ->
+```html
+<div class="wrapper">
+	<p class="special"></p>
+	<img src="dog.jpg" alt="">
+</div>
+```
++ To add multiple elements at a time, use the `*` to multiply by a certain number -> ul.list>li.list-item*5 will complete to ->
+```html
+<ul class="list">
+	<li class="list-item"></li>
+	<li class="list-item"></li>
+	<li class="list-item"></li>
+	<li class="list-item"></li>
+	<li class="list-item"></li>
+</ul>
+```
++ If you need to increment something, like unique list item identifiers, image src attributes, etc, just use the `$` and then specify how many elements you need -> ul>li.item-$*5 will complete to ->
+```html
+<ul>
+	<li class="item-1"></li>
+	<li class="item-2"></li>
+	<li class="item-3"></li>
+	<li class="item-4"></li>
+	<li class="item-5"></li>
+</ul>
+```
++ and if you need a leading zero in your increments, use two `$$`, it will replace the first $ with a zero when needed
+
+### Tag Wrapping
++ For when you already have content that you need to wrap in tags
++ use **control** + `w` after selecting the text you want to wrap
++ Then, in the box below that pops up, enter the emmet abbreviation that you want the tag to be
+
+### Emmet CSS
++ Uses fuzzy search to choose what it thinks you're looking for, for example 
+	* `ta-l` could be `text-align: left`, 
+	* `brad` could get you `border-radius:`, etc.
++ You can also provide values for example
+	* `m20`	-> `margin: 20px;`
+	* `p100`  -> `padding: 100px;`
+	* `w80p`  -> `width: 80%;`
+	* `h400r`  -> `height: 400rem;`
+	* `mih300e`  -> `min-height: 300em;` etc.
++ To add multiple values use a - or specify the type
+	* `m0-a`  -> `margin: 0 auto;`
+	* `p10-20-10-20`  -> `padding: 10px 20px 10px 20px;`
+	* `p3e5e9e6e`  -> `padding: 3em 5em 9em 6em;`
+	* `bd1-s-white`  -> `border: 1px solid white;`
++ See the emmet cheat sheet to see the hundreds of abbreviations and what they expand to
+
+### Value Bumping
++ Put your cursor anywhere in the value you want to change then hold down
+	* **option** and press up or down to increment/decrement your value by **0.1**
+	* **control** to increment/decrement by **1**
+	* **option** and **command** to increment/decrement by **10**
+
+### Emmet Filters
++ Using the pipe character | you can pipe your commands into filters
+	* |c will add comments to specify the ends of tags
+		- .outer>.inner|c ->
+			```html
+			<div class="outer">
+				<div class="inner"></div>
+				<!-- /.inner -->
+			</div>
+			<!-- /.outer -->
+			```
+	* |e will create escaping characters for you
+		- p.special|e ->
+			```html
+			&lt;p class="special"&gt;&lt;/p&gt;
+			```
+	* |s will expand to a single line, rather than blocks
+		- .wrapper>.main>p.about|s - >
+			```html
+			<div class="wrapper"><div class="main"><p class="about"></p></div></div>
+			```
+
+
 
 
 
